@@ -3,9 +3,11 @@
 import { useEffect, useState } from 'react';
 import './index.scss'
 import axios from 'axios';
+import MovieCard from '../MovieCard';
+import { Movie } from '@/types';
 
 export default function MovieList() {
-    const [movies, setMovies] = useState([]);
+    const [movies, setMovies] = useState<Movie[]>([]);
 
     useEffect(() => {
         getMovies();
@@ -27,14 +29,10 @@ export default function MovieList() {
     return (
         <ul className="movie-list">
             {movies.map((movie) => 
-                 <li className='movie-card'>
-                    <p>
-                        {movie.title}
-                    </p>
-                    <p className='description'>
-                        {movie.overview}
-                    </p>
-                 </li>
+                <MovieCard 
+                    key={movie.id}
+                    movie={movie}
+                />
             )}
         </ul>
     );

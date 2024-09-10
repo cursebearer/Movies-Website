@@ -21,9 +21,11 @@ export default function MovieCard(props: Props) {
                 <p className="movie-title">
                     {movie.title}
                 </p>
-                <StarRating 
+                {movie.vote_average > 0 && 
+                    <StarRating 
                     rating={movie.vote_average}
-                />
+                    />
+                }
                 <div className="hidden-content">
                    {movie.overview && 
                          <p className='description'>

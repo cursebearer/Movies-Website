@@ -26,6 +26,7 @@
         .movie-title {
             color: #f1f5f9;
             font-size: 12px;
+            margin-bottom: 6px;
         }
 
         .hidden-content {
@@ -34,7 +35,18 @@
             margin-top: 8px;
             height: 0px;
             opacity: 0;
-            transition: all .6s;
+            transition: all .5s;
+
+            .btn-default {
+                background-color: #6046ff;
+                padding: 6px 8px;
+                border-radius: 4px;
+                margin-top: 10px;
+                color: #fff;
+                border: none;
+                cursor: pointer;
+                width: 100%;
+            }
         }
     }
 
@@ -47,7 +59,14 @@
 
         .hidden-content {
             opacity: 1;
+        }
+
+        .movie-infos:has(.description) .hidden-content {
             height: 100px;
+        }
+
+        .movie-infos:not(:has(.description)) .hidden-content {
+            height: 50px;
         }
     }
 }

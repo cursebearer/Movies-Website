@@ -3,31 +3,32 @@
 import { useEffect, useState } from 'react';
 import './index.scss'
 import axios from 'axios';
-import MovieCard from '../MovieCard';
-import { Movie } from '@/types';
+import SerieCard from '../SerieCard';
+import { Serie } from '@/types';
 import ReactLoading from 'react-loading';
 
-export default function MovieList() {
-    const [movies, setMovies] = useState<Movie[]>([]);
+export default function SerieList() {
+    const [series, setSeries] = useState<Serie[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
 
     useEffect(() => {
-        getMovies();
+        getSeries();
     }, []);
 
-    const getMovies = async () => {
+    const getSeries = async () => {
         await axios({
             method: 'get',
-            url: 'https://api.themoviedb.org/3/discover/movie?&page=1',
+            url: 'https://api.themoviedb.org/3/discover/tv?&page=1',
             params: {
                 api_key: process.env.NEXT_PUBLIC_API_KEY,
                 language: 'pt-BR'
             }
         }).then(response => {
-            setMovies(response.data.results)
-            //console.log(response.data.results)
+            setSeries(response.data.results)
+            console.log(response.data.results)
         });
 
+        
         setIsLoading(false);
     }
 
@@ -40,11 +41,11 @@ export default function MovieList() {
     }
 
     return (
-        <ul className="movie-list">
-            {movies.map((movie) => 
-                <MovieCard 
-                    key={movie.id}
-                    movie={movie}
+        <ul className="serie-list">
+            {series.map((serie) => 
+                <SerieCard 
+                    key={serie.id}
+                    serie={serie}
                 />
             )}
         </ul>

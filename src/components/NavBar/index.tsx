@@ -1,9 +1,15 @@
+import Link from 'next/link';
 import './index.scss';
 
 export default function Navbar() {
     return (
         <div className="navbar">
-            <h1 className="page-title">Filmes</h1>
+            <Link href="/movies" className="page-title">
+                <h1>Filmes</h1>
+            </Link>
+            <Link href="/series" className="page-title">
+                <h1>Series</h1>
+            </Link>
         </div>
-    )
+    );
 }
